@@ -7,8 +7,8 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "classpath:features",
-        glue = {"info.seleniumcucumber.stepdefinitions",   // predefined step definitions package
-                "info.seleniumcucumber.userStepDefintions" // user step definitions package
+        glue = {"StepDefinitions"  // predefined step definitions package
+               // "info.seleniumcucumber.userStepDefintions" // user step definitions package
         },
         format = {
                 "pretty", "html:target/cucumberHtmlReport",
@@ -17,4 +17,11 @@ import org.junit.runner.RunWith;
         }
 )
 class TestRunner {
+
+
+//        @AfterClass
+//        public static void tearDownClass() {
+//                // Close web driver
+//                BaseScenario.quitDriver();
+//        }
 }
