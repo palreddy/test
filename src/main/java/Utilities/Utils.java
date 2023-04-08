@@ -4,8 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.URI;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -33,39 +34,49 @@ public class Utils {
         return properties;
     }
 
-    public String getRegistrationNumbers(){
-        String textToParse = "TdkRoot(0x0)/Tdk(0x2,0x0)/Tdk(0x0,0x1)/VAL(40A8F0B32240,2x4)/SN(0000:0000:0000:0000:0000:0000:0000:0000)/IP(000.1.000.1)/Blue(2x4,2x4)";
+    public List getRegistrationNumbers(String path) {
+        List<String> regNumbers = new ArrayList<>();
+        String  textToParse=  readContent(path);
+        System.out.println("textToParse"+textToParse);
         Pattern p = Pattern.compile("([A-Z]+\\d+\\s?[A-Z]*)");
         Matcher m = p.matcher(textToParse);
         while (m.find()) {
-            System.out.println("key :" + m.group(1));
-            System.out.println("key :" + m.group(2));
-            System.out.println("key :" + m.group(3));
-            System.out.println("key :" + m.group(4));
+            System.out.println("Group " + m.group(0));
+            regNumbers.add(m.group(0));
+            System.out.println("regNumbers " + regNumbers);
 
-return "x";
+//            for (int i = 0; i <= m.groupCount(); i++) {
+//                System.out.println("------------");
+//                System.out.println("Group " + i + ": " + m.group(i));
+//                //regNumbers.add(m.group(i));
+//
+//            }
+          //  System.out.println();
         }
 
-        public String readContent(fileContent){
-            Path filePath = Path.of(x);
-            String fileContent = "";
-            StringBuilder contentBuilder = new StringBuilder();
-
-            try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-
-                String sCurrentLine;
-                while ((sCurrentLine = br.readLine()) != null)
-                {
-                    contentBuilder.append(sCurrentLine).append("\n");
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-               fileContent = contentBuilder.toString();
-            return fileContent;
-        }
-
+        return regNumbers;
     }
+
+
+        public String readContent (String path) {
+                Path filePath = Path.of(path);
+        String fileContent = "";
+        StringBuilder contentBuilder = new StringBuilder();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath.toFile()))) {
+
+            String sCurrentLine;
+            while ((sCurrentLine = br.readLine()) != null) {
+                contentBuilder.append(sCurrentLine).append("\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        fileContent = contentBuilder.toString();
+        return fileContent;
+        }
+
+
 
 }

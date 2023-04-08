@@ -17,9 +17,9 @@ public class HomePage  extends DriverFactory {
         properties= utils.read(propertyFilePath);
     }
 
-    public void enterRegistartionNumber() {
+    public void enterRegistartionNumber(Object o) {
        // driver.findElement(By.id(properties.getProperty("reg-number-locator"))).sendKeys("xyz");
-        commonPage.enter(By.id(properties.getProperty("reg-number-locator")),"xyz");
+        commonPage.enter(By.id(properties.getProperty("reg-number-locator")),o.toString());
 
     }
 

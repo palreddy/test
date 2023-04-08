@@ -5,6 +5,8 @@ import PageObjects.HomePage;
 import cucumber.api.java.en.Given;
 import factory.DriverFactory;
 
+import java.util.List;
+
 
 public class HomeSteps {
 
@@ -21,10 +23,16 @@ public class HomeSteps {
 //    }
     @Given("^I open a page$")
     public void i_open_a_page() throws Throwable {
+      List registrationNumbers=  basePage.readFromInputFiles();
         basePage.openApplication();
-        homePage.enterRegistartionNumber();
-        homePage.clickButton();
-        basePage.getInputFileContent();
+        for(int i=0;i<=registrationNumbers.size();i++){
+            System.out.println("registrationNumbers.get(i)"+registrationNumbers.get(i));
+            homePage.enterRegistartionNumber(registrationNumbers.get(i));
+            homePage.clickButton();
+        }
+
+
+
 
       //  basePage .get("https://www.cazoo.co.uk/value-my-car/");
     }
