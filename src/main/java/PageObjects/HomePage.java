@@ -3,19 +3,22 @@ package PageObjects;
 import Utilities.Utils;
 import factory.DriverFactory;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 import java.util.Properties;
 
-public class HomePage  extends DriverFactory {
+public class HomePage   {
     CommonPage commonPage= new CommonPage(DriverFactory.getDefaultDriver());
     private final String propertyFilePath= "src/test/resources/properties/locators.properties";
     private static Properties properties;
     Utils utils=new Utils();
-    public HomePage(WebDriver webDriver) {
-        this.driver = driver;
+//    public HomePage(WebDriver webDriver) {
+//        this.driver = driver;
+//
+//    }
+    public HomePage() {
         properties= utils.read(propertyFilePath);
     }
+
 
     public void enterRegistartionNumber(Object o) {
        // driver.findElement(By.id(properties.getProperty("reg-number-locator"))).sendKeys("xyz");

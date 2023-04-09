@@ -8,10 +8,31 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.time.Duration;
 
+
+
 public class CommonPage extends DriverFactory {
     public CommonPage(WebDriver webDriver) {
         this.driver = driver;
 
+    }
+    public void getPage(String key) {
+          driver.get(key);
+    }
+    public String getTitle() {
+        return  driver.getTitle();
+
+    }
+    public String getText(By by) {
+       return driver.findElement(by).getText();
+
+    }
+
+
+    public void quit() {
+        driver.quit();
+    }
+    public boolean verifyElementIsDisplayed(By by) {
+       return  driver.findElement(by).isDisplayed();
     }
 
     public void webdriverWait(By by) {
