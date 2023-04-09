@@ -26,11 +26,20 @@ public class HomePage   {
 
     }
 
-    public void clickButton() {
-        commonPage.click(By.cssSelector(properties.getProperty("consent-locator")));
-        //commonPage.webdriverWait(By.cssSelector(properties.getProperty("start-valuation-locator")));
-       // driver.findElement(By.cssSelector(properties.getProperty("start-valuation-locator"))).click();
-        commonPage.click(By.cssSelector(properties.getProperty("start-valuation-locator")));
+    public void clickButton(int count) {
+
+        //System.out.println("....."+commonPage.verifyElementIsDisplayed(By.cssSelector(properties.getProperty("consent-locator"))));
+
+           if (count==0) {
+        //commonPage.getSize(By.cssSelector(properties.getProperty("consent-locator")));
+
+               commonPage.click(By.cssSelector(properties.getProperty("consent-locator")));
+
+           }
+            //commonPage.webdriverWait(By.cssSelector(properties.getProperty("start-valuation-locator")));
+            // driver.findElement(By.cssSelector(properties.getProperty("start-valuation-locator"))).click();
+            commonPage.click(By.cssSelector(properties.getProperty("start-valuation-locator")));
+
     }
 
 }

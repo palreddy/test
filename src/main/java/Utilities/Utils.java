@@ -14,17 +14,14 @@ public class Utils {
     public Utils() {
     properties= Utils.read(propertyFilePath);
 
-    System.out.println("properties"+properties);
     }
     public static Properties read(String path) {
-        System.out.println("im in read method");
         BufferedReader reader;
         try {
             reader = new BufferedReader(new FileReader(path));
             properties = new Properties();
             try {
                 properties.load(reader);
-                System.out.println("I am here......");
                 reader.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -34,20 +31,16 @@ public class Utils {
             e.printStackTrace();
             throw new RuntimeException("Configuration.properties not found at " + path);
         }
-        System.out.println("I am before properties return");
         return properties;
     }
 
     public List getRegistrationNumbers(String path) {
         List<String> regNumbers = new ArrayList<>();
         String  textToParse=  readContent(path);
-        System.out.println("textToParse"+textToParse);
         Pattern p = Pattern.compile("([A-Z]+\\d+\\s?[A-Z]*)");
         Matcher m = p.matcher(textToParse);
         while (m.find()) {
-            System.out.println("Group " + m.group(0));
             regNumbers.add(m.group(0));
-            System.out.println("regNumbers " + regNumbers);
 
 //            for (int i = 0; i <= m.groupCount(); i++) {
 //                System.out.println("------------");
@@ -86,11 +79,9 @@ public class Utils {
 
 
     public  String readFromPropertiesFile(String key) {
-        System.out.println("key"+key);
-        System.out.println("properties2222222"+properties);
+
 
         String value = (read(propertyFilePath)).getProperty(key);
-        System.out.println("............"+value);
         if(value != null) return value;
         else throw new RuntimeException("key not specified in the Configuration.properties file.");
     }
@@ -98,17 +89,13 @@ public class Utils {
 
     public  List readFromInputFiles() {
         File folder = new File(readFromPropertiesFile("input_file"));
-        System.out.println("folder" + folder);
         File[] listOfFiles = folder.listFiles();
-        System.out.println("listOfFiles" + listOfFiles);
 
 
         List regNumbers = null;
         for (int i = 0; i < listOfFiles.length; i++) {
             if (listOfFiles[i].isFile()) {
-                System.out.println("File " + listOfFiles[i].getName());
                 if (listOfFiles[i].getName().contains("car_input")) {
-                    System.out.println("abc...." + readFromPropertiesFile("input_file") + "/" + listOfFiles[i]);
 //utils.readContent(readFromPropertiesFile("input_file")+listOfFiles[i]);
                     regNumbers = getRegistrationNumbers(readFromPropertiesFile("input_file") + "/" + listOfFiles[i].getName());
                 }
@@ -120,7 +107,7 @@ public class Utils {
     }
 
     public void writeToFile(List registrationNumbers) throws IOException {
-        FileWriter fileWriter = new FileWriter("src/test/resources/testData/input_file");
+        FileWriter fileWriter = new FileWriter("src/test/resources/testData/input_file.csv");
         for (Object str : registrationNumbers) {
             fileWriter.write(str + System.lineSeparator());
         }

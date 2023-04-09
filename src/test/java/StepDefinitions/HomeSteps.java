@@ -22,7 +22,7 @@ public class HomeSteps {
 
     private ResultsPage resultsPage= new ResultsPage();
    public  static List registrationNumbers;
-   int count,i=0;
+    static int  count=0;
    public static String actualResult="result not displayed on the page";
     public static  String expectedResult="results displayed on the page";
 
@@ -71,6 +71,7 @@ public class HomeSteps {
     @Given("^I retrieve car registration numbers from the input file$")
     public void i_retrieve_car_registration_numbers_from_the_input_file() throws Throwable {
         registrationNumbers=   utils.readFromInputFiles();
+        System.out.println("reg numbers list"+registrationNumbers);
         utils.writeToFile(registrationNumbers);
 
     }
@@ -80,17 +81,17 @@ public class HomeSteps {
         basePage.openApplication("url");
         Assert.assertEquals(utils.readFromPropertiesFile("home-page-title"), resultsPage.getPageTitle());
 
-System.out.println("i value....."+i);
-        for(i=0;i<=registrationNumbers.size();i++){
+        for(int i=count;i<=registrationNumbers.size();i++){
             System.out.println("registrationNumbers.get(i)"+registrationNumbers.get(i));
             homePage.enterRegistartionNumber(registrationNumbers.get(i));
-            homePage.clickButton();
+            homePage.clickButton(count);
 
             Assert.assertEquals(utils.readFromPropertiesFile("results-page-title"), resultsPage.getPageTitle());
-            resultsPage.verifySearchStatus("car-result-failure");
+           // resultsPage.verifySearchStatus("car-result-failure");
             if((resultsPage.verifySearchStatus("car-result-failure"))){
                 System.out.println("no search results");
-                i=i++;
+                count=count+1;
+                System.out.println("count after"+count);
 
                 break;
             }
@@ -105,9 +106,10 @@ System.out.println("i value....."+i);
 
 
 
+
         }
 
-
+        i_search_on_the_cazoo_website();
 
 
 

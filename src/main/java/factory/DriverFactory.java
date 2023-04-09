@@ -46,9 +46,9 @@ public abstract class DriverFactory {
                     chromeOptions.addArguments("--headless");
                 }
                 capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-                System.out.println("********************* before driver created");
+
                 ChromeDriver driver = new ChromeDriver();
-                System.out.println("********************* after driver created");
+
                 ErrorHandler handler = new ErrorHandler();
                 handler.setIncludeServerErrors(false);
                 driver.setErrorHandler(handler);

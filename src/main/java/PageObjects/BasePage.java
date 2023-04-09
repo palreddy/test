@@ -4,6 +4,8 @@ import Utilities.Utils;
 import factory.DriverFactory;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class BasePage extends DriverFactory {
 
     CommonPage commonPage= new CommonPage(DriverFactory.getDefaultDriver());
@@ -15,6 +17,7 @@ public class BasePage extends DriverFactory {
 
     public BasePage(WebDriver webDriver) {
        this.driver = driver;
+
    // properties= utils.read(propertyFilePath);
    }
 
@@ -92,5 +95,9 @@ public class BasePage extends DriverFactory {
 
 
             // driver.quit();
+}
+public void implicitWait(){
+    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
 }
 }
