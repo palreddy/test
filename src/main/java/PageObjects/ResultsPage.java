@@ -34,11 +34,24 @@ return title;
         return   commonPage.verifyElementIsDisplayed(By.cssSelector(properties.getProperty(key)));
 
     }
-    public String getResults(String searchSuccess, String searchFailure) {
+    public String getResults(String searchSuccess, String searchFailure,String searchFailureFlex) {
 
-        return   commonPage.getSearchResults(By.cssSelector(properties.getProperty(searchSuccess)),By.cssSelector(properties.getProperty(searchFailure)));
+        return   commonPage.getSearchResults(By.cssSelector(properties.getProperty(searchSuccess)),
+                By.cssSelector(properties.getProperty(searchFailure)),
+                By.cssSelector(properties.getProperty(searchFailureFlex)));
 
     }
+
+    public Boolean compareResultWithOutputFile(String path, String result) {
+          String propertyFilePathForConfig= "src/test/resources/properties/locators.properties";
+        properties= utils.read(propertyFilePathForConfig);
+        System.out.println("path........"+properties.getProperty(path));
+        System.out.println("comparision result"+ utils.readTextFile(properties.getProperty(path),result));
+
+        return utils.readTextFile(properties.getProperty(path),result);
+
+    }
+
 
 
 
