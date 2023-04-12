@@ -3,6 +3,7 @@ package Utilities;
 import java.io.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
@@ -33,7 +34,14 @@ public class Utils {
         }
         return properties;
     }
-
+    public Boolean readTextFile(String path,String stringToCompare) {
+        Boolean flag=false;
+        String  textToParse=  readContent(path);
+        if(textToParse.contains(stringToCompare)) {
+            flag = true;
+        }
+      return flag;
+    }
     public List getRegistrationNumbers(String path) {
         List<String> regNumbers = new ArrayList<>();
         String  textToParse=  readContent(path);
@@ -103,10 +111,14 @@ public class Utils {
                 System.out.println("Directory " + listOfFiles[i].getName());
             }
         }
+
         return regNumbers;
     }
 
     public void writeToFile(List registrationNumbers) throws IOException {
+
+
+
         FileWriter fileWriter = new FileWriter("src/test/resources/testData/input_file.csv");
         for (Object str : registrationNumbers) {
             fileWriter.write(str + System.lineSeparator());
@@ -115,6 +127,32 @@ public class Utils {
 
 
     }
+    public String getTestData(String path,int number){
+
+        String line = "";
+        String splitBy = ",";
+        String[] employee = new String[0];
+        try
+        {
+//parsing a CSV file into BufferedReader class constructor
+            BufferedReader br = new BufferedReader(new FileReader(path));
+            while ((line = br.readLine()) != null)   //returns a Boolean value
+            {
+              employee = line.split(splitBy);    // use comma as separator
+                System.out.println("Employee =" + employee.length);
+                System.out.println("Employee =" + Arrays.stream(employee).toArray().toString());
+
+                System.out.println("Employee [First Name=" + employee[0]);
+            }
+
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+       return employee[number];
+
+}
 
 
 }

@@ -20,12 +20,17 @@ public class HomePage   {
     }
 
 
-    public void enterRegistartionNumber(Object o) {
+    public void enterRegistartionNumber(String regNumber) {
        // driver.findElement(By.id(properties.getProperty("reg-number-locator"))).sendKeys("xyz");
-        commonPage.enter(By.id(properties.getProperty("reg-number-locator")),o.toString());
+        commonPage.enter(By.id(properties.getProperty("reg-number-locator")),regNumber);
 
     }
+    public void clickButton() {
+        commonPage.click(By.cssSelector(properties.getProperty("consent-locator")));
+        commonPage.click(By.cssSelector(properties.getProperty("start-valuation-locator")));
 
+
+    }
     public void clickButton(int count) {
 
         //System.out.println("....."+commonPage.verifyElementIsDisplayed(By.cssSelector(properties.getProperty("consent-locator"))));

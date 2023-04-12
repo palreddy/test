@@ -34,5 +34,12 @@ return title;
         return   commonPage.verifyElementIsDisplayed(By.cssSelector(properties.getProperty(key)));
 
     }
+    public String getResults(String searchSuccess, String searchFailure) {
+
+        return   commonPage.getSearchResults(By.cssSelector(properties.getProperty(searchSuccess)),By.cssSelector(properties.getProperty(searchFailure)));
+
+    }
+
+
 
 }

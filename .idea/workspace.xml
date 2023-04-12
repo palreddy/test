@@ -6,14 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="4c27901e-2058-43fc-af05-b96bdb318852" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PageObjects/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PageObjects/BasePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/PageObjects/CommonPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PageObjects/CommonPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/PageObjects/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PageObjects/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PageObjects/ResultsPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PageObjects/ResultsPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Utilities/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Utilities/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/factory/DriverFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/factory/DriverFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Runners/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Runners/TestRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/HomeSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/HomeSteps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/Hooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/Hooks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/StepDefinitions/ResultsSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StepDefinitions/ResultsSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/features/test.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/features/test.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/properties/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/properties/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/properties/locators.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/properties/locators.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/testData/input_file.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +49,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/Users/rpisati/Downloads/test",
+    "last_opened_file_path": "/Users/rpisati/Downloads/test/src/test/resources/testData",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -64,21 +69,26 @@
       <recent name="$PROJECT_DIR$/src/test" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Utilities" />
       <recent name="factory" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.TestRunner">
-    <configuration name="TestRunner (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Feature: test" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/test.feature" />
+      <option name="GLUE" value="StepDefinitions" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="IdentityTask" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
+      <option name="SUGGESTED_NAME" value="Feature: test" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Runners.*" />
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Runners" />
-      <option name="MAIN_CLASS_NAME" value="Runners.TestRunner" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -146,10 +156,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TestRunner" />
+        <item itemvalue="Cucumber Java.Feature: test" />
         <item itemvalue="JUnit.TestRunner (5)" />
         <item itemvalue="JUnit.TestRunner (4)" />
         <item itemvalue="JUnit.TestRunner (3)" />
-        <item itemvalue="JUnit.TestRunner (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -163,5 +173,9 @@
       <updated>1680816043052</updated>
     </task>
     <servers />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

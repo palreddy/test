@@ -46,4 +46,21 @@ public class CommonPage extends DriverFactory {
     public void enter(By by,String key) {
         driver.findElement(by).sendKeys(key);
     }
+    public String getSearchResults(By searchSucess,By searchFailure) {
+        String result;
+        if ((driver.getPageSource().contains("Sorry, we couldn't find a car with that registration. Please re-enter your registration number")) ||
+                (driver.getPageSource().contains("Our history checks show the MOT has expired."))) {
+            result=  driver.findElement(searchFailure).getText();
+            System.out.println("failure"+result);
+
+        }
+        else {
+            result=   driver.findElement(searchSucess).getText();
+            System.out.println("success"+result);
+        }
+        System.out.println("end result"+result);
+
+        return result;
+    }
+
 }
