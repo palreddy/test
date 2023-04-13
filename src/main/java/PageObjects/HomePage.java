@@ -31,16 +31,26 @@ public class HomePage   {
 
 
     }
+
+
     public void clickButton(int count) {
 
-        //System.out.println("....."+commonPage.verifyElementIsDisplayed(By.cssSelector(properties.getProperty("consent-locator"))));
+System.out.println("..................."+commonPage.getPageSource());
+        if(commonPage.getPageSource().contains("Accept All")){
+            System.out.println("....."+commonPage.verifyElementIsDisplayed(By.cssSelector(properties.getProperty("consent-locator"))));
 
-           if (count==0) {
+            commonPage.click(By.cssSelector(properties.getProperty("consent-locator")));
+
+        }
+
+
+         //  if (count==1) {
+
         //commonPage.getSize(By.cssSelector(properties.getProperty("consent-locator")));
 
-               commonPage.click(By.cssSelector(properties.getProperty("consent-locator")));
+          //     commonPage.click(By.cssSelector(properties.getProperty("consent-locator")));
 
-           }
+         //  }
             //commonPage.webdriverWait(By.cssSelector(properties.getProperty("start-valuation-locator")));
             // driver.findElement(By.cssSelector(properties.getProperty("start-valuation-locator"))).click();
             commonPage.click(By.cssSelector(properties.getProperty("start-valuation-locator")));

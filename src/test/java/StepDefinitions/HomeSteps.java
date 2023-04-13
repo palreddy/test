@@ -73,10 +73,11 @@ public class HomeSteps {
         registrationNumberList=   utils.readFromInputFiles();
         System.out.println("reg numbers list"+registrationNumberList);
        // utils.writeToFile(utils.readFromInputFiles());
-        for(int i=0;i<registrationNumberList.size();i++) {
+        for(int i=1;i<registrationNumberList.size()+1;i++) {
             String  propertyKey="regNumber"+i;
-            System.setProperty(propertyKey, registrationNumberList.get(i).toString());
+            System.setProperty(propertyKey, registrationNumberList.get(i-1).toString());
         }
+
 
     }
 
@@ -156,8 +157,9 @@ public class HomeSteps {
     public void i_search_on_the_cazoo_website_with_first_registration_number(String regNumberCount) throws Throwable {
         basePage.openApplication("url");
         Assert.assertEquals(utils.readFromPropertiesFile("home-page-title"), resultsPage.getPageTitle());
+        System.out.println("while calling"+System.getProperty("regNumber"+regNumberCount));
         homePage.enterRegistartionNumber(System.getProperty("regNumber"+regNumberCount));
-        homePage.clickButton();
+        homePage.clickButton(new Integer(regNumberCount));
         Assert.assertEquals(utils.readFromPropertiesFile("results-page-title"), resultsPage.getPageTitle());
 
     }

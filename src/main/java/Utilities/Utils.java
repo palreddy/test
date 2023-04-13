@@ -19,6 +19,7 @@ public class Utils {
     public static Properties read(String path) {
         BufferedReader reader;
         try {
+            System.out.println("path"+path);
             reader = new BufferedReader(new FileReader(path));
             properties = new Properties();
             try {
@@ -34,8 +35,9 @@ public class Utils {
         }
         return properties;
     }
-    public Boolean readTextFile(String path,String stringToCompare) {
+    public Boolean compareresultsWithOutputFile(String path,String stringToCompare) {
         Boolean flag=false;
+        System.out.println("......path in compare method"+path);
         String  textToParse=  readContent(path);
         if(textToParse.contains(stringToCompare)) {
             flag = true;
@@ -50,20 +52,20 @@ public class Utils {
         while (m.find()) {
             regNumbers.add(m.group(0));
 
-//            for (int i = 0; i <= m.groupCount(); i++) {
-//                System.out.println("------------");
-//                System.out.println("Group " + i + ": " + m.group(i));
-//                //regNumbers.add(m.group(i));
-//
-//            }
-          //  System.out.println();
         }
 
         return regNumbers;
     }
 
+    public String orderResult (String result) {
+        String[] results = result.split(":");
+        return "x";
+    }
+
+
 
         public String readContent (String path) {
+        System.out.println("path.in read content.."+path);
                 Path filePath = Path.of(path);
         String fileContent = "";
         StringBuilder contentBuilder = new StringBuilder();
