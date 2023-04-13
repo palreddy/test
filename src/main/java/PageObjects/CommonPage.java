@@ -48,8 +48,6 @@ public class CommonPage extends DriverFactory {
 
     public void webdriverWait(By by) {
     WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds(10L));
-    //wait.until(ExpectedConditions.visibilityOfElementLocated(by));
-        //  wait.until(EC.frame_to_be_available_and_switch_to_it((by)));
 
     }
 
@@ -58,15 +56,7 @@ public class CommonPage extends DriverFactory {
         wait.until(webDriver -> "complete".equals(((JavascriptExecutor) webDriver)
                 .executeScript("return document.readyState")));
     }
-//    WebDriverWait wait = new WebDriverWait(driver, 30);
-//
-//    wait.until(new ExpectedCondition<Boolean>() {
-//        public Boolean apply(WebDriver wdriver) {
-//            return ((JavascriptExecutor) driver).executeScript(
-//                    "return document.readyState"
-//            ).equals("complete");
-//        }
-//    });
+
 
     public void click(By by) {
         driver.findElement(by).click();
@@ -76,18 +66,12 @@ public class CommonPage extends DriverFactory {
     }
     public String getSearchResults(By searchSucess,By searchFailure) throws InterruptedException {
         driver.getPageSource().length();
-        System.out.println( driver.getPageSource().lines().toArray().toString());
         String result;
        Thread.sleep(2000);
-        System.out.println(driver.getPageSource().contains("Sorry, we couldn't find a car with that registration. Please re-enter your registration number"));
 
-        System.out.println(driver.getPageSource().contains("Our history checks show the MOT has expired."));
-
-       // webdriverWait(flex);
         if ((driver.getPageSource().contains("Sorry, we couldn't find a car with that registration. Please re-enter your registration number")) ||
                 (driver.getPageSource().contains("Our history checks show the MOT has expired."))) {
             result=  driver.findElement(searchFailure).getText();
-            System.out.println("failure"+result);
 
         }
         else {
@@ -95,7 +79,6 @@ public class CommonPage extends DriverFactory {
             result=  utils.formattedResult(result);
 
         }
-        System.out.println("success result end"+result);
         return result;
     }
 

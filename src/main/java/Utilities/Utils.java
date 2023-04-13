@@ -19,7 +19,6 @@ public class Utils {
     public static Properties read(String path) {
         BufferedReader reader;
         try {
-            System.out.println("path"+path);
             reader = new BufferedReader(new FileReader(path));
             properties = new Properties();
             try {
@@ -36,13 +35,37 @@ public class Utils {
         return properties;
     }
     public Boolean compareresultsWithOutputFile(String path,String stringToCompare) {
-        Boolean flag=false;
-        System.out.println("......path in compare method"+path);
+        boolean contains =false;
+        boolean flag =false;
+
         String  textToParse=  readContent(path);
-        if(textToParse.contains(stringToCompare)) {
-            flag = true;
+       String[] expectedResult=textToParse.split("\\r?\\n");
+        expectedResult=removeEmptyValues(expectedResult);
+    contains = Arrays.stream(expectedResult).anyMatch(stringToCompare.trim()::equals);
+
+      for (int i=0;i<expectedResult.length;i++){
+
+
+
+       }
+      return contains;
+    }
+
+    public String[] removeEmptyValues(String[] stringArray){
+        String[] expectedResults = new String[10];
+        List<String> list = new ArrayList<String>();
+
+        for(String s : stringArray) {
+            if(s != null && s.length() > 0) {
+                list.add(s);
+            }
         }
-      return flag;
+        stringArray = list.toArray(new String[list.size()]);
+        for(int i=0;i<stringArray.length;i++){
+            expectedResults[i]=     stringArray[i].trim();
+
+        }
+return expectedResults;
     }
     public List getRegistrationNumbers(String path) {
         List<String> regNumbers = new ArrayList<>();
@@ -70,7 +93,6 @@ public class Utils {
         String    model= results[i+1].trim().substring(results[i+1].trim().indexOf(' ') + 1);
 
              formattedResult = registration[i-1]+","+make+","+model;
-            System.out.println("formatted....."+formattedResult);
             break;
         }
 
@@ -80,7 +102,6 @@ public class Utils {
 
 
         public String readContent (String path) {
-        System.out.println("path.in read content.."+path);
                 Path filePath = Path.of(path);
         String fileContent = "";
         StringBuilder contentBuilder = new StringBuilder();
@@ -121,7 +142,6 @@ public class Utils {
         for (int i = 0; i < listOfFiles.length; i++) {
             if (listOfFiles[i].isFile()) {
                 if (listOfFiles[i].getName().contains("car_input")) {
-//utils.readContent(readFromPropertiesFile("input_file")+listOfFiles[i]);
                     regNumbers = getRegistrationNumbers(readFromPropertiesFile("input_file") + "/" + listOfFiles[i].getName());
                 }
             } else if (listOfFiles[i].isDirectory()) {
@@ -151,16 +171,11 @@ public class Utils {
         String[] employee = new String[0];
         try
         {
-//parsing a CSV file into BufferedReader class constructor
             BufferedReader br = new BufferedReader(new FileReader(path));
             while ((line = br.readLine()) != null)   //returns a Boolean value
             {
               employee = line.split(splitBy);    // use comma as separator
-                System.out.println("Employee =" + employee.length);
-                System.out.println("Employee =" + Arrays.stream(employee).toArray().toString());
-
-                System.out.println("Employee [First Name=" + employee[0]);
-            }
+             }
 
         }
         catch (IOException e)

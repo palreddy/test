@@ -43,10 +43,6 @@ return title;
 
     public Boolean compareResultWithOutputFile(String path, String result) {
           String propertyFilePathForConfig= "src/test/resources/properties/config.properties";
-       // propertiesLocator= utils.read(propertyFilePathForConfig);
-     //   System.out.println("propertiesLocator...."+propertiesLocator);
-        System.out.println("path..in page class...*****..."+path);
-        System.out.println("comparision result"+ utils.compareresultsWithOutputFile(path,result));
 
         return utils.compareresultsWithOutputFile(path,result);
 
