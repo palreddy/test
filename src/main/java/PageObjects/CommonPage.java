@@ -45,7 +45,8 @@ public class CommonPage extends DriverFactory {
     public String getSearchResults(By searchSucess, By searchFailure) throws InterruptedException {
         String result;
         Thread.sleep(2000);
-        if ((driver.getPageSource().contains("Sorry, we couldn't find a car with that registration. Please re-enter your registration number")) ||
+        if ((driver.getPageSource().contains("Sorry, we couldn't find a car with that registration. " +
+                "Please re-enter your registration number")) ||
                 (driver.getPageSource().contains("Our history checks show the MOT has expired."))) {
             result = driver.findElement(searchFailure).getText();
         } else {

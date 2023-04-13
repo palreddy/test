@@ -18,10 +18,4 @@ import org.junit.runner.RunWith;
 )
 public class TestRunner {
 
-
-//        @AfterClass
-//        public static void tearDownClass() {
-//                // Close web driver
-//                BaseScenario.quitDriver();
-//        }
 }
