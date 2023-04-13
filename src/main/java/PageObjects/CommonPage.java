@@ -34,7 +34,6 @@ public class CommonPage extends DriverFactory {
         driver.quit();
     }
 
-
     public void click(By by) {
         driver.findElement(by).click();
     }
@@ -55,5 +54,4 @@ public class CommonPage extends DriverFactory {
         }
         return result;
     }
-
 }

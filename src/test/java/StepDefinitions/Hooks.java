@@ -12,7 +12,6 @@ public class Hooks {
     public void implicitWait() {
         basePage.implicitWait();
     }
-
     @After
     public void quitBrowser() {
         basePage.quitBrowser();

@@ -85,7 +85,6 @@ public class Utils {
 
             String make = results[i + 1].trim().substring(0, results[i + 1].trim().indexOf(' ')); // "72"
             String model = results[i + 1].trim().substring(results[i + 1].trim().indexOf(' ') + 1);
-
             formattedResult = registration[i - 1] + "," + make + "," + model;
             break;
         }
@@ -107,7 +106,6 @@ public class Utils {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         fileContent = contentBuilder.toString();
         return fileContent;
     }

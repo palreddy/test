@@ -12,20 +12,15 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class DriverFactory {
     public static long DEFAULT_WAIT = 20;
-    // public String getPageTitle(){ return webdriver.getTitle();}
     protected static WebDriver driver;
-    protected WebDriver webdriver;
-
     public static WebDriver getDefaultDriver() {
         if (driver != null) {
             return driver;
         }
-
         System.setProperty("webdriver.chrome.driver", "webdrivers/chromedriver.exe");
         System.setProperty("webdriver.gecko.driver", "webdrivers/geckodriver");
         DesiredCapabilities capabilities;
         capabilities = new DesiredCapabilities(new FirefoxOptions());
-        // capabilities = DesiredCapabilities.firefox();
         capabilities.setJavascriptEnabled(true);
         capabilities.setCapability("takesScreenshot", true);
         driver = chooseDriver(capabilities);
@@ -64,5 +59,4 @@ public abstract class DriverFactory {
                 return firefox;
         }
     }
-
 }

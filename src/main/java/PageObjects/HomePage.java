@@ -16,7 +16,6 @@ public class HomePage {
         properties = utils.read(propertyFilePath);
     }
 
-
     public void enterRegistartionNumber(String regNumber) {
         commonPage.enter(By.id(properties.getProperty("reg-number-locator")), regNumber);
     }
