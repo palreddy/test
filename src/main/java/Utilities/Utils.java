@@ -11,11 +11,12 @@ import java.util.regex.Pattern;
 
 public class Utils {
     private static Properties properties;
-    private final String propertyFilePath= "src/test/resources/properties/config.properties";
-    public Utils() {
-    properties= Utils.read(propertyFilePath);
+    private final String propertyFilePath = "src/test/resources/properties/config.properties";
 
+    public Utils() {
+        properties = Utils.read(propertyFilePath);
     }
+
     public static Properties read(String path) {
         BufferedReader reader;
         try {
@@ -34,75 +35,66 @@ public class Utils {
         }
         return properties;
     }
-    public Boolean compareresultsWithOutputFile(String path,String stringToCompare) {
-        boolean contains =false;
-        boolean flag =false;
 
-        String  textToParse=  readContent(path);
-       String[] expectedResult=textToParse.split("\\r?\\n");
-        expectedResult=removeEmptyValues(expectedResult);
-    contains = Arrays.stream(expectedResult).anyMatch(stringToCompare.trim()::equals);
+    public Boolean compareresultsWithOutputFile(String path, String stringToCompare) {
+        boolean contains = false;
 
-      for (int i=0;i<expectedResult.length;i++){
+        String textToParse = readContent(path);
+        String[] expectedResult = textToParse.split("\\r?\\n");
+        expectedResult = removeEmptyValues(expectedResult);
+        contains = Arrays.stream(expectedResult).anyMatch(stringToCompare.trim()::equals);
 
-
-
-       }
-      return contains;
+        for (int i = 0; i < expectedResult.length; i++) {
+        }
+        return contains;
     }
 
-    public String[] removeEmptyValues(String[] stringArray){
+    public String[] removeEmptyValues(String[] stringArray) {
         String[] expectedResults = new String[10];
         List<String> list = new ArrayList<String>();
 
-        for(String s : stringArray) {
-            if(s != null && s.length() > 0) {
+        for (String s : stringArray) {
+            if (s != null && s.length() > 0) {
                 list.add(s);
             }
         }
         stringArray = list.toArray(new String[list.size()]);
-        for(int i=0;i<stringArray.length;i++){
-            expectedResults[i]=     stringArray[i].trim();
-
+        for (int i = 0; i < stringArray.length; i++) {
+            expectedResults[i] = stringArray[i].trim();
         }
-return expectedResults;
+        return expectedResults;
     }
+
     public List getRegistrationNumbers(String path) {
         List<String> regNumbers = new ArrayList<>();
-        String  textToParse=  readContent(path);
+        String textToParse = readContent(path);
         Pattern p = Pattern.compile("([A-Z]+\\d+\\s?[A-Z]*)");
         Matcher m = p.matcher(textToParse);
         while (m.find()) {
             regNumbers.add(m.group(0));
-
         }
-
         return regNumbers;
     }
 
-    public String formattedResult (String result) {
+    public String formattedResult(String result) {
         String formattedResult = null;
         String[] results = result.split(":");
 
-        for (int i=1;i<results.length;i++){
-
+        for (int i = 1; i < results.length; i++) {
             String registration[] = results[i].split("\\r?\\n");
 
+            String make = results[i + 1].trim().substring(0, results[i + 1].trim().indexOf(' ')); // "72"
+            String model = results[i + 1].trim().substring(results[i + 1].trim().indexOf(' ') + 1);
 
-        String    make=  results[i+1].trim().substring(0, results[i+1].trim().indexOf(' ')); // "72"
-        String    model= results[i+1].trim().substring(results[i+1].trim().indexOf(' ') + 1);
-
-             formattedResult = registration[i-1]+","+make+","+model;
+            formattedResult = registration[i - 1] + "," + make + "," + model;
             break;
         }
-
         return formattedResult;
     }
 
 
-
-        public String readContent (String path) {
-                Path filePath = Path.of(path);
+    public String readContent(String path) {
+        Path filePath = Path.of(path);
         String fileContent = "";
         StringBuilder contentBuilder = new StringBuilder();
 
@@ -118,25 +110,19 @@ return expectedResults;
 
         fileContent = contentBuilder.toString();
         return fileContent;
-        }
+    }
 
 
-
-
-
-    public  String readFromPropertiesFile(String key) {
-
-
+    public String readFromPropertiesFile(String key) {
         String value = (read(propertyFilePath)).getProperty(key);
-        if(value != null) return value;
+        if (value != null) return value;
         else throw new RuntimeException("key not specified in the Configuration.properties file.");
     }
 
 
-    public  List readFromInputFiles() {
+    public List readFromInputFiles() {
         File folder = new File(readFromPropertiesFile("input_file"));
         File[] listOfFiles = folder.listFiles();
-
 
         List regNumbers = null;
         for (int i = 0; i < listOfFiles.length; i++) {
@@ -148,43 +134,6 @@ return expectedResults;
                 System.out.println("Directory " + listOfFiles[i].getName());
             }
         }
-
         return regNumbers;
     }
-
-    public void writeToFile(List registrationNumbers) throws IOException {
-
-
-
-        FileWriter fileWriter = new FileWriter("src/test/resources/testData/input_file.csv");
-        for (Object str : registrationNumbers) {
-            fileWriter.write(str + System.lineSeparator());
-        }
-        fileWriter.close();
-
-
-    }
-    public String getTestData(String path,int number){
-
-        String line = "";
-        String splitBy = ",";
-        String[] employee = new String[0];
-        try
-        {
-            BufferedReader br = new BufferedReader(new FileReader(path));
-            while ((line = br.readLine()) != null)   //returns a Boolean value
-            {
-              employee = line.split(splitBy);    // use comma as separator
-             }
-
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-       return employee[number];
-
-}
-
-
 }

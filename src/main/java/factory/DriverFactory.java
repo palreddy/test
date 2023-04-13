@@ -11,22 +11,21 @@ import org.openqa.selenium.remote.ErrorHandler;
 import java.util.concurrent.TimeUnit;
 
 public abstract class DriverFactory {
-    protected WebDriver webdriver;
-   // public String getPageTitle(){ return webdriver.getTitle();}
-
     public static long DEFAULT_WAIT = 20;
+    // public String getPageTitle(){ return webdriver.getTitle();}
     protected static WebDriver driver;
+    protected WebDriver webdriver;
 
     public static WebDriver getDefaultDriver() {
         if (driver != null) {
             return driver;
         }
-        
+
         System.setProperty("webdriver.chrome.driver", "webdrivers/chromedriver.exe");
         System.setProperty("webdriver.gecko.driver", "webdrivers/geckodriver");
         DesiredCapabilities capabilities;
         capabilities = new DesiredCapabilities(new FirefoxOptions());
-       // capabilities = DesiredCapabilities.firefox();
+        // capabilities = DesiredCapabilities.firefox();
         capabilities.setJavascriptEnabled(true);
         capabilities.setCapability("takesScreenshot", true);
         driver = chooseDriver(capabilities);
@@ -35,6 +34,7 @@ public abstract class DriverFactory {
         driver.manage().window().maximize();
         return driver;
     }
+
     private static WebDriver chooseDriver(DesiredCapabilities capabilities) {
         String preferredDriver = System.getProperty("browser", "Firefox");
         boolean headless = System.getProperty("Headless", "true").equals("true");
@@ -53,10 +53,9 @@ public abstract class DriverFactory {
                 handler.setIncludeServerErrors(false);
                 driver.setErrorHandler(handler);
                 return driver;
-           
+
             default:
                 FirefoxOptions options = new FirefoxOptions();
-                //capabilities.s
                 if (headless) {
                     options.addArguments("-headless", "-safe-mode");
                 }

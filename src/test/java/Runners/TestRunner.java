@@ -8,14 +8,13 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "classpath:features",
-        glue = {"StepDefinitions"  // predefined step definitions package
-                // "info.seleniumcucumber.userStepDefintions" // user step definitions package
+        glue = {"StepDefinitions"
         },
-       format = {
-               "pretty", "html:target/cucumberHtmlReport",
-                "html:target/cucumberHtmlReport",     //  for html result
-                "pretty:target/cucumber-json-report.json"   // for json result
-       }
+        format = {
+                "pretty", "html:target/cucumberHtmlReport",
+                "html:target/cucumberHtmlReport",
+                "pretty:target/cucumber-json-report.json"
+        }
 )
 public class TestRunner {
 
