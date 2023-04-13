@@ -16,7 +16,6 @@
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-java</artifactId>
@@ -46,18 +45,11 @@
             <artifactId>selenium-java</artifactId>
             <version>4.8.1</version>
         </dependency>
-
-
-
-
         <dependency>
             <groupId>org.seleniumhq.webdriver</groupId>
             <artifactId>webdriver-selenium</artifactId>
             <version>0.9.7376</version>
         </dependency>
-
-
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -72,7 +64,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
             </plugin>
-
         </plugins>
     </build>
 </project>
