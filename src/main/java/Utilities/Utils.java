@@ -57,9 +57,24 @@ public class Utils {
         return regNumbers;
     }
 
-    public String orderResult (String result) {
+    public String formattedResult (String result) {
+        String formattedResult = null;
         String[] results = result.split(":");
-        return "x";
+
+        for (int i=1;i<results.length;i++){
+
+            String registration[] = results[i].split("\\r?\\n");
+
+
+        String    make=  results[i+1].trim().substring(0, results[i+1].trim().indexOf(' ')); // "72"
+        String    model= results[i+1].trim().substring(results[i+1].trim().indexOf(' ') + 1);
+
+             formattedResult = registration[i-1]+","+make+","+model;
+            System.out.println("formatted....."+formattedResult);
+            break;
+        }
+
+        return formattedResult;
     }
 
 

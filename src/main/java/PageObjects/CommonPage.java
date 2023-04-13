@@ -92,10 +92,10 @@ public class CommonPage extends DriverFactory {
         }
         else {
             result=   driver.findElement(searchSucess).getText();
-            utils.orderResult(result);
-            System.out.println("success"+result);
-        }
+            result=  utils.formattedResult(result);
 
+        }
+        System.out.println("success result end"+result);
         return result;
     }
 

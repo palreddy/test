@@ -35,7 +35,6 @@ public class HomePage   {
 
     public void clickButton(int count) {
 
-System.out.println("..................."+commonPage.getPageSource());
         if(commonPage.getPageSource().contains("Accept All")){
             System.out.println("....."+commonPage.verifyElementIsDisplayed(By.cssSelector(properties.getProperty("consent-locator"))));
 
