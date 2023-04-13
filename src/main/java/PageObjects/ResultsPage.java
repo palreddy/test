@@ -8,31 +8,25 @@ import java.util.Properties;
 import static PageObjects.BasePage.utils;
 
 public class ResultsPage {
-    CommonPage commonPage= new CommonPage(DriverFactory.getDefaultDriver());
-    BasePage basePage= new BasePage(DriverFactory.getDefaultDriver());
     private static Properties properties;
-    private final String propertyFilePath= "src/test/resources/properties/locators.properties";
+    private final String propertyFilePath = "src/test/resources/properties/locators.properties";
+    CommonPage commonPage = new CommonPage(DriverFactory.getDefaultDriver());
 
     public ResultsPage() {
-        properties= utils.read(propertyFilePath);
+        properties = utils.read(propertyFilePath);
     }
+
     public String getPageTitle() {
-        // driver.findElement(By.id(properties.getProperty("reg-number-locator"))).sendKeys("xyz");
-      String title=  commonPage.getTitle();
-return title;
+        String title = commonPage.getTitle();
+        return title;
+    }
+    public String getResults(String searchSuccess, String searchFailure) throws InterruptedException {
+        return commonPage.getSearchResults(By.cssSelector(properties.getProperty(searchSuccess)),
+                By.cssSelector(properties.getProperty(searchFailure)));
     }
 
-    public String getsearchResult(String key) {
-
-        String  value= utils.readFromPropertiesFile(key);
-
-     return   commonPage.getText(By.cssSelector(value));
+    public Boolean compareResultWithOutputFile(String path, String result) {
+        return utils.compareresultsWithOutputFile(path, result);
 
     }
-
-    public boolean verifySearchStatus(String key) {
-        return   commonPage.verifyElementIsDisplayed(By.cssSelector(properties.getProperty(key)));
-
-    }
-
 }

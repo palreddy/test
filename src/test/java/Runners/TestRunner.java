@@ -1,5 +1,6 @@
 package Runners;
 
+
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
@@ -7,16 +8,15 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "classpath:features",
-        glue = {"StepDefinitions"  // predefined step definitions package
-               // "info.seleniumcucumber.userStepDefintions" // user step definitions package
+        glue = {"StepDefinitions"
         },
         format = {
                 "pretty", "html:target/cucumberHtmlReport",
-                "html:target/cucumberHtmlReport",     //  for html result
-                "pretty:target/cucumber-json-report.json"   // for json result
+                "html:target/cucumberHtmlReport",
+                "pretty:target/cucumber-json-report.json"
         }
 )
-class TestRunner {
+public class TestRunner {
 
 
 //        @AfterClass
