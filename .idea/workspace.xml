@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4c27901e-2058-43fc-af05-b96bdb318852" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/PageObjects/CommonPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PageObjects/CommonPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Runners/TestRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Runners/TestRunner.java" afterDir="false" />
-    </list>
+    <list default="true" id="4c27901e-2058-43fc-af05-b96bdb318852" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +22,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2O4NlClDCF1oT98UNUwXyniw9Wu" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
