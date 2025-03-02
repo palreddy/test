@@ -1,19 +1,26 @@
 package StepDefinitions;
 
 
+
+import PageObjects.HomePage;
 import PageObjects.ResultsPage;
 import Utilities.Utils;
-import cucumber.api.java.en.Then;
+import io.cucumber.java.en.Then;
 import org.junit.Assert;
 
 public class ResultsSteps {
     public static String result;
     private Utils utils = new Utils();
     private ResultsPage resultsPage = new ResultsPage();
+    private HomePage homePage = new HomePage();
 
-    @Then("^I should retrieve the results and compare with the output file$")
-    public void i_should_retrieve_the_results_and_compare_with_the_output_file() throws Throwable {
-        result = resultsPage.getResults("search-results-success", "search-results-failure");
-        Assert.assertEquals(true,
-                resultsPage.compareResultWithOutputFile(utils.readFromPropertiesFile("output_file"), result));}
+    @Then("^I should verify the car details and confirm$")
+    public void i_should_verify_the_car_details_and_confirm() throws Throwable {
+        Assert.assertEquals(utils.readFromPropertiesFile("car_details"), resultsPage.getText("car details"));
+
+//        homePage.clickButton("confirm-vehicle");
+//        Assert.assertEquals(utils.readFromPropertiesFile("home-page-title"), resultsPage.getPageTitle());
+//
+//        Assert.assertEquals(utils.readFromPropertiesFile("car-worth"), resultsPage.getText("car worth"));
+    }
 }

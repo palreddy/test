@@ -1,7 +1,7 @@
 package PageObjects;
 
+import Driver.DriverFactory;
 import Utilities.Utils;
-import factory.DriverFactory;
 
 public class BasePage  {
     static Utils utils = new Utils();
@@ -15,6 +15,6 @@ public class BasePage  {
         commonPage.quit();
     }
     public void implicitWait() {
-        commonPage.implicitWait();
+       commonPage.implicitWait();
     }
 }

@@ -1,12 +1,12 @@
 package PageObjects;
 
+import Driver.DriverFactory;
 import Utilities.Utils;
-import factory.DriverFactory;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
-
+import java.time.Duration;
 
 public class CommonPage extends DriverFactory {
     private Utils utils = new Utils();
@@ -23,12 +23,41 @@ public class CommonPage extends DriverFactory {
     }
 
     public void implicitWait() {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     public String getPageSource() {
         return driver.getPageSource();
     }
+
+    public String getText(String type) {
+        String text="";
+        switch(type) {
+            case "car details":
+                if(getPageSource().contains("BMW 1 Series")){
+                    text= "BMW 1 Series " +
+                            "120d M Sport 2dr";
+                }else {
+                    text= "not matched";
+                }                break;
+            case "car worth":
+                if(getPageSource().contains("BMW 1 Series")){
+                    text= "Your car could be worth";
+                }else {
+                    text= "not matched";
+                }                break;
+
+        }
+
+return text;
+    }
+
+    public String getCarWorth(By by) {
+        return   driver.findElement(by).getText();
+
+    }
+
+
 
     public void quit() {
         driver.quit();
@@ -42,6 +71,20 @@ public class CommonPage extends DriverFactory {
         driver.findElement(by).sendKeys(key);
     }
 
+
+    public WebElement element(By locator){
+        Integer timeoutLimitSeconds = 20;
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        try {
+            wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+
+        }
+        catch(TimeoutException e){
+            throw new NoSuchElementException(locator.toString());
+        }
+        WebElement element = driver.findElement(locator);
+        return element;
+    }
     public String getSearchResults(By searchSucess, By searchFailure) throws InterruptedException {
         String result;
         Thread.sleep(2000);

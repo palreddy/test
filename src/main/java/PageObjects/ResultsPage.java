@@ -1,6 +1,7 @@
 package PageObjects;
 
-import factory.DriverFactory;
+
+import Driver.DriverFactory;
 import org.openqa.selenium.By;
 
 import java.util.Properties;
@@ -19,6 +20,15 @@ public class ResultsPage {
     public String getPageTitle() {
         String title = commonPage.getTitle();
         return title;
+    }
+    public String getText(String type) {
+        if(type.equals("car details")){
+            return commonPage.getText(type);
+        }else{
+            return commonPage.getText(type);
+        }
+
+
     }
     public String getResults(String searchSuccess, String searchFailure) throws InterruptedException {
         return commonPage.getSearchResults(By.cssSelector(properties.getProperty(searchSuccess)),
